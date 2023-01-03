@@ -1,0 +1,82 @@
+[
+	{
+		"id": 1,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Parque la esperanza",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 2,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Centro historio",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 3,
+		"estado": "inactivo",
+		"tipo": "Parque",
+		"referencia": "Nuevo catastro municipal",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 4,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Plaza Grande",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 5,
+		"estado": "inactivo",
+		"tipo": "Parque",
+		"referencia": "Unidad deportiva Morelos",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 6,
+		"estado": "inactivo",
+		"tipo": "Parque",
+		"referencia": "Estacion de ferrocarriles",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 7,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Parque Santiago",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 8,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Centenario",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 9,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "T1",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	},
+	{
+		"id": 10,
+		"estado": "activo",
+		"tipo": "Parque",
+		"referencia": "Monumento a la bandera",
+		"creado": "",
+		"etapa": "Desarrollo del proyecto"
+	}
+]
