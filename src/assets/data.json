@@ -5,20 +5,20 @@
 		"tipo": "Parque",
 		"referencia": "Parque la esperanza",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Identificación de necesidades"
 	},
 	{
 		"id": 2,
 		"estado": "activo",
-		"tipo": "Parque",
+		"tipo": "Predio",
 		"referencia": "Centro historio",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Alineación a la normativa"
 	},
 	{
 		"id": 3,
-		"estado": "inactivo",
-		"tipo": "Parque",
+		"estado": "suspendido",
+		"tipo": "Predio",
 		"referencia": "Nuevo catastro municipal",
 		"creado": "",
 		"etapa": "Desarrollo del proyecto"
@@ -29,11 +29,11 @@
 		"tipo": "Parque",
 		"referencia": "Plaza Grande",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Validación del proyecto"
 	},
 	{
 		"id": 5,
-		"estado": "inactivo",
+		"estado": "suspendido",
 		"tipo": "Parque",
 		"referencia": "Unidad deportiva Morelos",
 		"creado": "",
@@ -41,11 +41,11 @@
 	},
 	{
 		"id": 6,
-		"estado": "inactivo",
-		"tipo": "Parque",
+		"estado": "suspendido",
+		"tipo": "Escuela",
 		"referencia": "Estacion de ferrocarriles",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Elaboración del convenio"
 	},
 	{
 		"id": 7,
@@ -58,15 +58,15 @@
 	{
 		"id": 8,
 		"estado": "activo",
-		"tipo": "Parque",
+		"tipo": "Predio",
 		"referencia": "Centenario",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Notificación de resultado"
 	},
 	{
 		"id": 9,
 		"estado": "activo",
-		"tipo": "Parque",
+		"tipo": "Escuela",
 		"referencia": "T1",
 		"creado": "",
 		"etapa": "Desarrollo del proyecto"
@@ -74,9 +74,9 @@
 	{
 		"id": 10,
 		"estado": "activo",
-		"tipo": "Parque",
+		"tipo": "Predio",
 		"referencia": "Monumento a la bandera",
 		"creado": "",
-		"etapa": "Desarrollo del proyecto"
+		"etapa": "Puesta en marcha"
 	}
 ]

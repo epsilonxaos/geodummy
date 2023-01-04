@@ -1,6 +1,7 @@
-import moment from 'moment'
+import moment from 'moment';
+import { getColorBaged } from '../../assets/js/helpers';
 
-const Tabla = ({titles, data}) => {
+const Tabla = ({titles, data, searchVal, handlerInputSearch}) => {
 
 	const iconActivo = <svg className="icon icon-tabler icon-tabler-circle-check" width="20" height="20" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#00b341" fill="none" strokeLinecap="round" strokeLinejoin="round">
 			<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -21,7 +22,7 @@ const Tabla = ({titles, data}) => {
 				<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 					<svg className="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
 				</div>
-				<input type="text" id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-200 w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar"/>
+				<input type="text" onInput={handlerInputSearch} value={searchVal} id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-200 w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar"/>
 			</div>
 			<div className="relative overflow-y-auto overflow-x-auto h-[350px] shadow-md">
 				<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -55,7 +56,7 @@ const Tabla = ({titles, data}) => {
 											{moment().format('L')}
 										</td>
 										<td className="px-6 py-4">
-											<span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+											<span className={`${getColorBaged(item['etapa'].toLowerCase().replaceAll(' ', '_'))} text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded `}>
 												{item.etapa}
 											</span>
 										</td>

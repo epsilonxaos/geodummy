@@ -11,16 +11,26 @@ import { useState, useEffect } from 'react';
 function App() {
 	const [results, setResults] = useState(data);
 	const [mapa, setMapa] = useState(false);
+	const [search, setSearch] = useState('');
 
 	const handlerSetMapa = (mapaInit) => {
 		setMapa(mapaInit);
 	};
 
+	const handlerInputSearch = (ev) => {
+		setSearch(ev.target.value);
+		if (search.length > 3) setResults(filterIt(data, search))
+	};
+
 	useEffect(() => {
-		if(mapa) console.log(mapa);
+		if(!search.length) setResults(data)
 	})
 
-	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa'],  data: results}
+	const filterIt = (arr, searchKey) => {
+		return arr.filter(obj => Object.keys(obj).some(key => obj[key].toString().toLowerCase().includes(searchKey.toLowerCase()) ));
+	}
+
+	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa'],  data: results, searchVal: search, handlerInputSearch: handlerInputSearch}
 
 	return (
 		<div className="App bg-white h-screen w-full font-barlow">
