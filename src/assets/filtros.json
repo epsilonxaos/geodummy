@@ -1,0 +1,50 @@
+[
+	{
+		"title": "Tipo",
+		"filterNode": "tipo",
+		"nodes": [
+			{
+				"value": "todos",
+				"label": "Todos",
+				"children": [
+					{ "value": "Parque", "label": "Parques" },
+					{ "value": "Escuela", "label": "Escuelas" },
+					{ "value": "Predio", "label": "Predios" }
+				]
+			}
+		]
+	},
+	{
+		"title": "Etapas",
+		"filterNode": "etapa",
+		"nodes": [
+			{
+				"value": "todos",
+				"label": "Todos",
+				"children": [
+					{ "value": "Desarrollo del proyecto", "label": "Desarrollo del proyecto" },
+					{ "value": "Alineación a la normativa", "label": "Alineación a la normativa" },
+					{ "value": "Validación del proyecto", "label": "Validación del proyecto" },
+					{ "value": "Elaboración del convenio", "label": "Elaboración del convenio" },
+					{ "value": "Notificación de resultado", "label": "Notificación de resultado" },
+					{ "value": "Puesta en marcha", "label": "Puesta en marcha" },
+					{ "value": "Identificación de necesidades", "label": "Identificación de necesidades" }
+				]
+			}
+		]
+	},
+	{
+		"title": "Estado",
+		"filterNode": "estado",
+		"nodes": [
+			{
+				"value": "todos",
+				"label": "Todos",
+				"children": [
+					{ "value": "activo", "label": "Activos" },
+					{ "value": "suspendido", "label": "Inactivos" }
+				]
+			}
+		]
+	}
+]

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rct-collapse, .rct-checkbox, .rct-node-icon {
+	padding: 0 !important;
+}
+/* .rct-collapse *, .rct-checkbox *, .rct-node-icon * {
+	width: inherit !important;
+} */

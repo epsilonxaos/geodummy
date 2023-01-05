@@ -12,4 +12,12 @@ const getColorBaged = (idx) => {
 	return colors[idx]();
 }
 
-export {getColorBaged};
+const filterContain = (arr, searchKey) => {
+	return arr.filter(obj => Object.keys(obj).some(key => obj[key].toString().toLowerCase().includes(searchKey.toLowerCase()) ));
+}
+
+const filterUnique = (arr, key, value) => {
+	return arr.filter(obj => value.includes(obj[key]));
+}
+
+export {getColorBaged, filterContain, filterUnique};

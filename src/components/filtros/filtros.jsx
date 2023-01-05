@@ -1,18 +1,13 @@
+import { useEffect, useState } from "react";
 import Accordion from "./accordion";
+import data from '../../assets/filtros.json';
 
-const Filtros = () => {
-	const fTipo = [{
-		"nivel": "Todos",
-		"subnivel": ['Parques', 'Escuelas', 'Predios']
-	}];
-	const fEtapas = [{
-		"nivel": "Todos",
-		"subnivel": ['Desarrollo del proyecto', 'Alineación a la normativa', 'Validación del proyecto', 'Elaboración del convenio', 'Notificación de resultado', 'Puesta en marcha', 'Identificación de necesidades']
-	}];
-	const fEstado = [{
-		"nivel": "Todos",
-		"subnivel": ['Activos', 'Inactivos']
-	}];
+const Filtros = ({onChecked}) => {
+	const [filtro, setFiltros] = useState([]);
+
+	useEffect(() => {
+		setFiltros(data);
+	}, []);
 
 	return(
 		<div className="container">
@@ -20,11 +15,17 @@ const Filtros = () => {
 			<p className="text-lg text-gray-900 font-bold mb-4">Filtros</p>
 
 			<div id="accordion-open" data-accordion="open">
-				
-				<Accordion title={"Tipo"} filters={fTipo} key="accordion-1" />
-				<Accordion title={"Etapas"} filters={fEtapas} key="accordion-2" />
-				<Accordion title={"Estado"} filters={fEstado} key="accordion-3" />
-
+				{
+					filtro.map((item, idx) => {
+						return <Accordion 
+							onChecked={onChecked} 
+							title={item.title} 
+							filterNode={item.filterNode} 
+							nodes={item.nodes} 
+							key={`accordion-${idx}`} 
+						/>
+					})
+				}
 			</div>
 
 
