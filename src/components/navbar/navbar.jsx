@@ -1,10 +1,12 @@
+import logo from '../../assets/logo-geo.svg';
+
 const Navbar = () => {
 	return(	
 		<nav className="bg-[#214d78] border-[#214d78] px-2 sm:px-4 py-2.5">
 			<div className="flex flex-wrap items-center justify-between mx-auto">
 				<span className="flex items-center">
-					<img src="https://geoportal.merida.gob.mx/img/meridamemueve.svg" className="h-6 sm:h-9" alt="Geoportal" />
-					<img src="https://geoportal.merida.gob.mx/img/logo_geo_letras_blanco.svg" className="h-3 mr-3 sm:h-7" alt="Geoportal" />
+					<img src={logo} className="h-6 sm:h-10 brightness-[10.5]" alt="Geoportal" />
+					{/* <img src="https://geoportal.merida.gob.mx/img/logo_geo_letras_blanco.svg" className="h-3 mr-3 sm:h-7" alt="Geoportal" /> */}
 				</span>
 				<div className="flex md:order-2 items-center">
 					<svg className="icon icon-tabler icon-tabler-user-circle mr-4" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
