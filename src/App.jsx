@@ -27,8 +27,6 @@ function App() {
 		filters.forEach((f, idx) => {
 			fil.push([filterNode, "=", f]);
 
-			console.log(idx);
-
 			if(idx != filters.length - 1) fil.push("or");
 		});
 
@@ -38,8 +36,6 @@ function App() {
             .toArray();
 		// let filter = filterUnique(data, filterNode, filters);
 		// let newResult = [...results, ...filter];
-
-		console.log(filter);
 
 		setResultsData(filter)
 	}

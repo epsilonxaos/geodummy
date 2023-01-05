@@ -4,10 +4,10 @@ const Navbar = () => {
 			<div className="flex flex-wrap items-center justify-between mx-auto">
 				<span className="flex items-center">
 					<img src="https://geoportal.merida.gob.mx/img/meridamemueve.svg" className="h-6 sm:h-9" alt="Geoportal" />
-					<img src="https://geoportal.merida.gob.mx/img/logo_geo_letras_blanco.svg" className="h-3 mr-3 sm:h-4" alt="Geoportal" />
+					<img src="https://geoportal.merida.gob.mx/img/logo_geo_letras_blanco.svg" className="h-3 mr-3 sm:h-7" alt="Geoportal" />
 				</span>
 				<div className="flex md:order-2 items-center">
-					<svg className="icon icon-tabler icon-tabler-user-circle mr-4" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
+					<svg className="icon icon-tabler icon-tabler-user-circle mr-4" width="32" height="32" viewBox="0 0 24 24" strokeWidth="1" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 						<circle cx="12" cy="12" r="9" />
 						<circle cx="12" cy="10" r="3" />

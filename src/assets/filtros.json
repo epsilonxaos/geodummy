@@ -2,6 +2,7 @@
 	{
 		"title": "Tipo",
 		"filterNode": "tipo",
+		"nodesChildrensActives": false,
 		"nodes": [
 			{
 				"value": "todos",
@@ -17,6 +18,7 @@
 	{
 		"title": "Etapas",
 		"filterNode": "etapa",
+		"nodesChildrensActives": false,
 		"nodes": [
 			{
 				"value": "todos",
@@ -36,6 +38,7 @@
 	{
 		"title": "Estado",
 		"filterNode": "estado",
+		"nodesChildrensActives": ["activo"],
 		"nodes": [
 			{
 				"value": "todos",

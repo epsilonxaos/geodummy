@@ -22,7 +22,8 @@ const Filtros = ({onChecked}) => {
 							title={item.title} 
 							filterNode={item.filterNode} 
 							nodes={item.nodes} 
-							key={`accordion-${idx}`} 
+							key={`accordion-${idx}`}
+							nodesChildrensActives={item.nodesChildrensActives}
 						/>
 					})
 				}

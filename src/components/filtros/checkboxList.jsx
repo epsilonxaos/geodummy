@@ -2,7 +2,7 @@ import CheckboxTree from 'react-checkbox-tree';
 import '../../css/tree-checkbox-custom.css'
 import { useEffect, useState } from "react";
 
-const CheckboxList = ({nodes, onChecked, filterNode}) => {
+const CheckboxList = ({nodes, onChecked, filterNode, nodesChildrensActives}) => {
 	const [checked, setChecked] = useState([]);
 	const [expanded, setExpanded] = useState([]);
 
@@ -18,6 +18,7 @@ const CheckboxList = ({nodes, onChecked, filterNode}) => {
 
 	const getNodesChildrens = (nodes) => {
 		let childrens = [];
+		if (nodesChildrensActives) return nodesChildrensActives;
 
 		nodes.forEach(({children}) => {
 			children.forEach(({value}) => childrens = [...childrens, value]);
@@ -36,7 +37,7 @@ const CheckboxList = ({nodes, onChecked, filterNode}) => {
 			nodes={nodes}
 			checked={checked}
 			expanded={expanded}
-			onCheck={(checked, targetNode) => {onChecked(checked, filterNode); console.log(targetNode, checked);  setChecked(checked);}}
+			onCheck={(checked) => {onChecked(checked, filterNode); setChecked(checked);}}
 			onExpand={expanded => setExpanded(expanded)}
 			icons={{
 				check: <><svg className="icon icon-tabler icon-tabler-checkbox" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="#214d78" fill="none" strokeLinecap="round" strokeLinejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <polyline points="9 11 12 14 20 6" /> <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /> </svg></>,
