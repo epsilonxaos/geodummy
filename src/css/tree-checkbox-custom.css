@@ -35,12 +35,12 @@
 	margin-bottom: 8px;
 	cursor: pointer;
   }
-  .react-checkbox-tree label:hover {
+  /* .react-checkbox-tree label:hover {
 	background: rgba(51, 51, 204, 0.1);
   }
   .react-checkbox-tree label:active, .react-checkbox-tree label:focus {
 	background: rgba(51, 51, 204, 0.15);
-  }
+  } */
   .react-checkbox-tree:not(.rct-native-display) input {
 	display: none;
   }
@@ -153,6 +153,16 @@
   
   .rct-title {
 	padding: 0 5px;
+  }
+
+  .dark .rct-title {
+	color: rgb(229, 231, 235)
+  }
+
+  .dark .rct-collapse svg *, 
+  .dark .rct-checkbox svg *,
+  .dark .rct-node-icon svg * {
+	stroke: rgb(229, 231, 235);
   }
   
   .rct-icons-fa4 .rct-icon-expand-close::before {

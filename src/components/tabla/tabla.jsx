@@ -49,6 +49,8 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 
 	useEffect(() => {setResultsData(data)}, [data])
 
+	console.log(data);
+
 	return (
 		<>
 			<label htmlFor="table-search" className="sr-only">Search</label>
@@ -60,7 +62,7 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 			</div>
 			<div className="relative overflow-y-auto overflow-x-auto h-[350px] shadow-md">
 				<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="datasoruce-table">
-					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0 z-[1]">
+					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400 sticky top-0 z-[1]">
 						<tr>
 							{
 								titles.map((item, k) => {
@@ -70,6 +72,7 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 						</tr>
 					</thead>
 					<tbody>
+						{console.log(results)}
 						{
 							results.map((item, k) => {
 								const tr = {
@@ -111,7 +114,7 @@ const TrList = ({addMarker, id, estado, tipo, referencia, etapa, location, activ
 		</svg>;
 
 	return(
-		<tr className={` border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ${id == active ? 'bg-gray-100' : 'bg-white'}`} onClick={() => {addMarker(location, id);}}>
+		<tr className={` border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ${id == active ? 'bg-gray-100 dark:bg-gray-600' : 'bg-white'}`} onClick={() => {addMarker(location, id);}}>
 			<th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 				{id}
 			</th>

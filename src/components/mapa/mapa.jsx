@@ -1,16 +1,23 @@
 import { useEffect } from "react";
-import {Map, TileLayer} from 'maptalks';
+import {Map, WMSTileLayer} from 'maptalks';
 
 const GtMaps = ({mapa, handlerSetMapa}) => {
-
+	const darkClass = document.querySelector('html').classList;
 	const configMap = {
 		center: [-89.623796268718, 20.9664258609255],
 		zoom: 16,
-		baseLayer: new TileLayer('base', {
-			urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-			subdomains: ["a","b","c","d"],
-			attribution: '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>'
-		  })
+		baseLayer: new WMSTileLayer('wms', {
+			'spatialReference': {
+				projection: 'EPSG:3857'
+			},
+			'urlTemplate': ' https://geoportal.merida.gob.mx/api/geoproxy?',
+			'token': `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjkzMjQ3OTAsIm5iZiI6MTY2OTMyNDc5MCwiaWRzZXNpb24iOiI0MDQzOTgwIn0.znqNUvGW2YNBqndzUp5OUGShRdLqsAUZXEd-XluO7vo`,
+			'layers': (!darkClass.contains('dark')) ? 'merida_base_obscuro' : 'merida_base',
+			'styles': '',
+			'version': '1.1.1',
+			'format': 'image/jpeg',
+			tileSize: [768, 768]
+		})
 	}
 
 	useEffect(() => {
