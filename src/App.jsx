@@ -27,16 +27,13 @@ function App() {
 		setMapa(mapaInit);
 	};
 
-	const setFilters = () => {
+	const setFilters = (query) => {
 		let filter = Query(datasource)
-			.filter(filtros)
+			.filter(query)
 			.sortBy('id')
 			.toArray();
 
-			console.log(filter);
-
 		setResults(filter);
-		console.log(results);
 	}
 
 	const updateBaseLayer = () => {
@@ -68,7 +65,6 @@ function App() {
 	}
 
 	useEffect(() => {
-		// setResults(data);
 		setDataSource(data);
 	}, [])
 
@@ -77,14 +73,13 @@ function App() {
 	}, [theme]);	
 
 	useEffect(() => {
-		if(filtros) setFilters();
-		console.log('ejecutando');
+		if(filtros) setFilters(filtros);
 	}, [filtros])
 
 	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa'],  data: results, mapa: mapa, getIdSelect: getIdSelect}
 
 	return (
-		<DataContext.Provider value={{datasource, updateFiltros}}>
+		<DataContext.Provider value={{datasource, updateFiltros, setFilters}}>
 			<div className={`bg-white dark:bg-gray-700 h-screen w-full font-barlow pl-[55px]`}>
 				<Sidebar toggleTheme={toggleTheme} />
 
@@ -112,28 +107,28 @@ function App() {
 										>
 											{
 												tabs ? 
-													<div class="relative overflow-x-auto">
-														<table class="w-full text-sm text-left text-gray-500 dark:text-gray-200">
+													<div className="relative overflow-x-auto">
+														<table className="w-full text-sm text-left text-gray-500 dark:text-gray-200">
 															<tbody>
-																<tr class="">
-																	<th scope="row" class="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> ID: </th>
-																	<td class="px-6 py-4"> {tabs.id} </td>
+																<tr className="">
+																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> ID: </th>
+																	<td className="px-6 py-4"> {tabs.id} </td>
 																</tr>
-																<tr class="">
-																	<th scope="row" class="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Estado: </th>
-																	<td class="px-6 py-4"> {tabs.estado} </td>
+																<tr className="">
+																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Estado: </th>
+																	<td className="px-6 py-4"> {tabs.estado} </td>
 																</tr>
-																<tr class="">
-																	<th scope="row" class="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Tipo: </th>
-																	<td class="px-6 py-4"> {tabs.tipo} </td>
+																<tr className="">
+																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Tipo: </th>
+																	<td className="px-6 py-4"> {tabs.tipo} </td>
 																</tr>
-																<tr class="">
-																	<th scope="row" class="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Referencia: </th>
-																	<td class="px-6 py-4"> {tabs.referencia} </td>
+																<tr className="">
+																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Referencia: </th>
+																	<td className="px-6 py-4"> {tabs.referencia} </td>
 																</tr>
-																<tr class="">
-																	<th scope="row" class="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Etapa: </th>
-																	<td class="px-6 py-4"> {tabs.etapa} </td>
+																<tr className="">
+																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Etapa: </th>
+																	<td className="px-6 py-4"> {tabs.etapa} </td>
 																</tr>
 															</tbody>
 														</table>

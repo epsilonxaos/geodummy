@@ -45,7 +45,7 @@
 				"label": "Todos",
 				"children": [
 					{ "value": "activo", "label": "Activos" },
-					{ "value": "suspendido", "label": "Inactivos" }
+					{ "value": "suspendido", "label": "Suspendidos" }
 				]
 			}
 		]

@@ -1,6 +1,6 @@
 import CheckboxList from "./checkboxList";
 
-const Accordion = ({title, nodes, filterNode, nodesChildrensActives, filterQueryBuild}) => {	
+const Accordion = ({title, nodes, filterNode, nodesChildrensActives, filterQueryBuild, queryBuild}) => {	
 	return(
 		<>
 			<h2 id={`accordion-open-heading-${title.toLowerCase()}`}>
@@ -10,7 +10,7 @@ const Accordion = ({title, nodes, filterNode, nodesChildrensActives, filterQuery
 			</h2>
 			<div id={`accordion-open-body-${title.toLowerCase()}`} aria-labelledby={`accordion-open-heading-${title.toLowerCase()}`}>
 				<div className="p-5 font-light border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-700" key={`accordion-open-body-${title.toLowerCase()}`}>
-					<CheckboxList nodes={nodes} filterNode={filterNode} nodesChildrensActives={nodesChildrensActives} filterQueryBuild={filterQueryBuild} />
+					<CheckboxList nodes={nodes} filterNode={filterNode} nodesChildrensActives={nodesChildrensActives} filterQueryBuild={filterQueryBuild} queryBuild={queryBuild} />
 				</div>
 			</div>
 		</>

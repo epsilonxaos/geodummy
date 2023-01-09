@@ -12,6 +12,7 @@ const Filtros = () => {
 		setFiltros(data);
 	}, []);
 
+	// Construir query de interno de la lista
 	const filterQueryBuild = (filtersActives, filterNode) => {
 		let temp = [];
 		filtersActives.forEach((f, idx) => {
@@ -37,7 +38,8 @@ const Filtros = () => {
 		setFilterBuild(FB);
 	}
 
-	useEffect(() => {
+	// Construir query con las listas
+	const queryBuild = () => {
 		let dataSc = datasource;
 		if(filterBuild) {
 			let temp = [];
@@ -49,9 +51,16 @@ const Filtros = () => {
 
 			dataSc.filters = temp;
 
-			console.log(temp);
-			updateFiltros(temp)
+			return temp
+			
 		}
+
+		return false;
+	}
+
+	useEffect(() => {
+		let query = queryBuild(); 
+		if(query) updateFiltros(query);
 	}, [filterBuild])
 	
 
@@ -70,6 +79,7 @@ const Filtros = () => {
 							key={`accordion-${idx}`}
 							nodesChildrensActives={item.nodesChildrensActives}
 							filterQueryBuild={filterQueryBuild}
+							queryBuild={queryBuild}
 						/>
 					})
 				}

@@ -28,7 +28,7 @@ const GtMaps = ({mapa, handlerSetMapa}) => {
 
 	return(
 		<>
-			<div id="map" className="h-[430px]"></div>
+			<div id="map" className="h-[415px]"></div>
 		</>
 	);
 }

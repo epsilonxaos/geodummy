@@ -1,10 +1,12 @@
 import CheckboxTree from 'react-checkbox-tree';
 import '../../css/tree-checkbox-custom.css'
 import { useContext, useEffect, useState } from "react";
+import { DataContext } from '../../context/Context';
 
-const CheckboxList = ({nodes, filterNode, nodesChildrensActives, filterQueryBuild}) => {
+const CheckboxList = ({nodes, filterNode, nodesChildrensActives, filterQueryBuild, queryBuild}) => {
 	const [checked, setChecked] = useState([]);
 	const [expanded, setExpanded] = useState([]);
+	const {setFilters} = useContext(DataContext);
 
 	const getNodeIds = (nodes) => {
 		let ids = [];
@@ -34,6 +36,10 @@ const CheckboxList = ({nodes, filterNode, nodesChildrensActives, filterQueryBuil
 
 	useEffect(() => {
 		filterQueryBuild(checked, filterNode);
+		setTimeout(() => {
+			let query = queryBuild();
+			if(query) setFilters(query);
+		}, 100);
 	},[checked])
 
 	return (

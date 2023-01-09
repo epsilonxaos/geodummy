@@ -5,7 +5,7 @@ const Sidebar = ({toggleTheme}) => {
 
 	return(
 		<>
-			<aside className="w-[50px] hover:w-[200px] bg-white dark:bg-gray-800 transition-all h-full fixed top-0 left-0 z-10 group" aria-label="Sidebar" style={{boxShadow: "0 2px 2px 0 rgb(0, 0, 0, 0.2)"}}>
+			<aside className="w-[50px] hover:w-[200px] bg-white dark:bg-gray-800 transition-all h-full fixed top-0 left-0 z-10 group border-r dark:border-r-slate-800" aria-label="Sidebar" style={{boxShadow: "0 2px 2px 0 rgb(0, 0, 0, 0.2)"}}>
 				<div className="dark:bg-gray-800">
 					<div className="bg-[#254088] dark:bg-black px-4 py-3.5">
 						<div className="flex items-center justify-center group-hover:justify-start">
@@ -41,6 +41,19 @@ const Sidebar = ({toggleTheme}) => {
 							<span className="hidden group-hover:block pl-3 font-semibold text-sm uppercase"><span className="block dark:hidden">Modo oscuro</span> <span className="hidden dark:block">Modo claro</span></span>
 						</li>
 					</ul>
+
+					{/* <ul className="text-[#6e7a81] dark:text-gray-200">
+						<li className="py-3.5 flex justify-center items-center cursor-pointer group-hover:justify-start px-4 border-pink-500 border-[1px] bg-[#ec008c1f]">
+							<MdHelpOutline size={"18px"} /> <span className="hidden group-hover:block pl-3 font-semibold text-sm uppercase">Ayuda</span>
+						</li>
+						<li className="py-3.5 flex justify-center items-center cursor-pointer group-hover:justify-start px-4">
+							<MdShare size={"18px"} /> <span className="hidden group-hover:block pl-3 font-semibold text-sm uppercase">Compartir</span>
+						</li>
+						<li className="py-3.5 flex justify-center items-center cursor-pointer group-hover:justify-start px-4" onClick={() => {toggleTheme()}}>
+							<MdOutlineLightMode className="hidden dark:block" /> <MdOutlineNightlight className="block dark:hidden" />
+							<span className="hidden group-hover:block pl-3 font-semibold text-sm uppercase"><span className="block dark:hidden">Modo oscuro</span> <span className="hidden dark:block">Modo claro</span></span>
+						</li>
+					</ul> */}
 				</div>
 			</aside>
 

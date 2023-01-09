@@ -49,8 +49,6 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 
 	useEffect(() => {setResultsData(data)}, [data])
 
-	console.log(data);
-
 	return (
 		<>
 			<label htmlFor="table-search" className="sr-only">Search</label>
@@ -61,7 +59,7 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 				<input type="text" onInput={handlerInputSearch} value={search} id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-200 w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar"/>
 			</div>
 			<div className="relative overflow-y-auto overflow-x-auto h-[350px] shadow-md">
-				<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="datasoruce-table">
+				<table className="w-full min-w-[800px] text-sm text-left text-gray-500 dark:text-gray-400" id="datasoruce-table">
 					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400 sticky top-0 z-[1]">
 						<tr>
 							{
@@ -72,7 +70,6 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 						</tr>
 					</thead>
 					<tbody>
-						{console.log(results)}
 						{
 							results.map((item, k) => {
 								const tr = {
@@ -91,6 +88,7 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 					</tbody>
 				</table>
 			</div>
+			<p className="mb-0 text-sm pt-2 text-black dark:text-gray-300">Mostrando {results.length} de {data.length} resultados</p>
 		</>
 	);
 }
