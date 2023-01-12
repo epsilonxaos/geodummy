@@ -81,7 +81,9 @@ function App() {
 				<Sidebar toggleTheme={toggleTheme} />
 
 				<div className="p-3 pt-5">
-					<h3 className="flex items-center mb-8 text-gray-700 dark:text-white border-b border-b-gray-100 dark:border-b-gray-500 pb-2"><MdAccountTree size={"2.25rem"} /> <span className="font-semibold text-4xl uppercase pl-4">Proyectos</span></h3>
+					<h3 className="flex items-center mb-8 text-gray-700 dark:text-white border-b border-b-gray-100 dark:border-b-gray-500 pb-2">
+						<MdAccountTree size={"2.25rem"} /> <span className="font-semibold text-4xl uppercase pl-4">Proyectos</span>
+					</h3>
 					<div className="grid-cols-4 grid gap-2">
 						<div className="p-3 border-slate-100 dark:border-slate-500 border">
 							<Filtros/>
