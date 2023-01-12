@@ -12,8 +12,6 @@ const Dropdown = (props) => {
 	} = props;
 
 	useEffect(() => {
-		console.log(ref);
-
 		ref['current'].addEventListener('mouseleave', (e) => {
 			setToggle(false);
 		}, false);
