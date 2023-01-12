@@ -1,19 +1,18 @@
-import Navbar from './components/navbar/navbar';
+import { useState, useEffect } from 'react';
+
+import data from './assets/data.json';
+
 import Filtros from './components/filtros/filtros';
 import Tabla from './components/tabla/tabla';
 import GtMaps from './components/mapa/mapa';
 import Sidebar from './components/Sidebar';
-import useResults from './hooks/useResults';
-import Query from 'devextreme/data/query';
+import TabInfo from './components/tabs';
+
 import { DataContext } from './context/Context';
-import data from './assets/data.json';
+import Query from 'devextreme/data/query';
 import { MdAccountTree } from 'react-icons/md';
 import {WMSTileLayer} from 'maptalks';
 
-import { Tabs } from 'flowbite-react';
-
-import './css/app.css'
-import { useState, useEffect, createContext } from 'react';
 
 function App() {
 	const [results, setResults] = useState([]);
@@ -56,7 +55,7 @@ function App() {
 	}
 
 	const updateFiltros = (filters) => setFiltros(filters);
-	
+
 	const toggleTheme = () => {setTheme(!theme); updateBaseLayer();};
 
 	const getIdSelect = (idx) => {
@@ -64,9 +63,7 @@ function App() {
 		setTabs(f)
 	}
 
-	useEffect(() => {
-		setDataSource(data);
-	}, [])
+	useEffect(() => setDataSource(data), [])
 
 	useEffect(() => {
 		theme ? document.querySelector("html").classList.add('dark') : document.querySelector("html").classList.remove('dark')
@@ -97,53 +94,7 @@ function App() {
 									<GtMaps mapa={mapa} handlerSetMapa={handlerSetMapa} />
 								</div>
 								<div className="bg-gray-50 dark:bg-gray-800 col-span-2">
-									<Tabs.Group
-									aria-label="Default tabs"
-									style="underline"
-									>
-										<Tabs.Item
-											active={true}
-											title="General"
-										>
-											{
-												tabs ? 
-													<div className="relative overflow-x-auto">
-														<table className="w-full text-sm text-left text-gray-500 dark:text-gray-200">
-															<tbody>
-																<tr className="">
-																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> ID: </th>
-																	<td className="px-6 py-4"> {tabs.id} </td>
-																</tr>
-																<tr className="">
-																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Estado: </th>
-																	<td className="px-6 py-4"> {tabs.estado} </td>
-																</tr>
-																<tr className="">
-																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Tipo: </th>
-																	<td className="px-6 py-4"> {tabs.tipo} </td>
-																</tr>
-																<tr className="">
-																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Referencia: </th>
-																	<td className="px-6 py-4"> {tabs.referencia} </td>
-																</tr>
-																<tr className="">
-																	<th scope="row" className="w-28 px-6 pr-1 py-4 font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap"> Etapa: </th>
-																	<td className="px-6 py-4"> {tabs.etapa} </td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-
-												: <></>
-											}
-										</Tabs.Item>
-										<Tabs.Item title="Desarrollo Social" disabled={true}>
-											Dashboard content
-										</Tabs.Item>
-										<Tabs.Item title="Desarrollo Urbano" disabled={true}>
-											Settings content
-										</Tabs.Item>
-									</Tabs.Group>
+									<TabInfo tabs={tabs} />
 								</div>
 							</div>
 
