@@ -76,7 +76,7 @@ const Filtros = () => {
 							title={item.title} 
 							filterNode={item.filterNode} 
 							nodes={item.nodes} 
-							key={`accordion-${idx}`}
+							key={`accordion-${item.title}`}
 							nodesChildrensActives={item.nodesChildrensActives}
 							filterQueryBuild={filterQueryBuild}
 							queryBuild={queryBuild}
