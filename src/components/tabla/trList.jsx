@@ -21,7 +21,7 @@ const TrList = ({addMarker, id, estado, tipo, referencia, etapa, location, activ
 			<td className="cursor-pointer px-6 py-4" onClick={() => addMarker(location, id)}>
 				{moment().format('L')}
 			</td>
-			<td className="px-6 py-4">
+			<td className="px-6 py-4 dark:text-gray-800">
 				<span className={`${getColorBaged(etapa)} text-xs font-medium mr-2 px-2.5 py-0.5 rounded `}>
 					{etapa}
 				</span>
