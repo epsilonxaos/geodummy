@@ -34,7 +34,7 @@ const Button = (props) => {
 		<button
 			type="button"
 			onClick={() => handlerToggle()}
-			className="text-gray-900 border border-gray-50 hover:bg-gray-100 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-gray-700 dark:hover:bg-gray-800 dark:border-gray-600 dark:text-white"
+			className="text-gray-900 hover:bg-gray-100 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-white"
 		> 
 			{props.children}
 		</button>
