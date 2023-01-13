@@ -84,11 +84,11 @@ function App() {
 					<h3 className="flex items-center mb-3 text-gray-700 dark:text-white border-b border-b-gray-100 dark:border-b-gray-500 pb-2">
 						<MdAccountTree size={"2.25rem"} /> <span className="font-semibold text-4xl uppercase pl-4">Proyectos</span>
 					</h3>
-					<div className="grid-cols-4 grid gap-2">
+					<div className="grid-cols-5 grid gap-2">
 						<div className="p-3 border-slate-100 dark:border-slate-500 border">
 							<Filtros/>
 						</div>
-						<div className="col-span-3 p-3  border-slate-100 dark:border-slate-500 border">
+						<div className="col-span-4 p-3  border-slate-100 dark:border-slate-500 border">
 							<Tabla {...dataTable} />
 
 							<div className="grid grid-cols-4 gap-2 pt-5">
