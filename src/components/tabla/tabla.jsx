@@ -59,7 +59,7 @@ const Tabla = ({titles, data, mapa, getIdSelect}) => {
 				</div>
 			</div>
 			<div className="relative overflow-y-auto overflow-x-auto h-[350px] shadow-md">
-				<table className="w-full min-w-[800px] text-sm text-left text-gray-500 dark:text-gray-400" id="datasoruce-table">
+				<table className="w-full min-w-[900px] text-sm text-left text-gray-500 dark:text-gray-400" id="datasoruce-table">
 					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400 sticky top-0 z-[1]">
 						<tr>
 							{
