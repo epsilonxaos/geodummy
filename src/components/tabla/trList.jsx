@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getColorBaged } from '../../assets/js/helpers';
-import {MdMoreHoriz, MdWarning, MdDeleteForever, MdCheckCircle, MdDangerous} from 'react-icons/md';
+import {MdMoreVert, MdWarning, MdDeleteForever, MdCheckCircle, MdDangerous} from 'react-icons/md';
 import Dropdown from '../dropdown/dropdown';
 
 const TrList = ({addMarker, id, estado, tipo, referencia, etapa, location, active}) => {
@@ -29,7 +29,7 @@ const TrList = ({addMarker, id, estado, tipo, referencia, etapa, location, activ
 			<td className="px-6 py-4">
 				<Dropdown>
 					<Dropdown.Button>
-						<MdMoreHoriz size={"20px"} />
+						<MdMoreVert size={"20px"} />
 					</Dropdown.Button>
 					<Dropdown.Body>
 						<ul className="text-sm text-gray-700 dark:text-gray-200">
