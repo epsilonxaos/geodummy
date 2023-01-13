@@ -73,7 +73,7 @@ function App() {
 		if(filtros) setFilters(filtros);
 	}, [filtros])
 
-	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa', 'Acciones'],  data: results, mapa: mapa, getIdSelect: getIdSelect}
+	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa', ''],  data: results, mapa: mapa, getIdSelect: getIdSelect}
 
 	return (
 		<DataContext.Provider value={{datasource, updateFiltros, setFilters}}>

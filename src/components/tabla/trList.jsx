@@ -26,7 +26,7 @@ const TrList = ({addMarker, id, estado, tipo, referencia, etapa, location, activ
 					{etapa}
 				</span>
 			</td>
-			<td className="px-6 py-1">
+			<td className="px-6 py-1 w-10">
 				<Dropdown>
 					<Dropdown.Button>
 						<MdMoreVert size={"20px"} />
