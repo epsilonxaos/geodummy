@@ -1,19 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {MdOutlineMap, MdHelpOutline, MdShare, MdAccountTree, MdOutlineLightMode, MdOutlineNightlight} from 'react-icons/md';
 import { RxCaretDown } from 'react-icons/rx';
 import { FiMenu } from 'react-icons/fi';
+import { useClickOutside } from '@mantine/hooks';
 
 const Sidebar = ({toggleTheme}) => {
 	const [active, setActive] = useState(false);
-	const ref = useRef(null);
+	const ref = useClickOutside(() => setActive(false));
 
 	const handlerToggleActive = () => setActive(!active);
-
-	useEffect(() => {
-		ref['current'].addEventListener('mouseleave', (e) => {
-			setActive(false);
-		}, false);
-	}, [ref]);
 
 	return(
 		<>

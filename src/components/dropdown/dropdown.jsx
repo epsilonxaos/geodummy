@@ -1,21 +1,22 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useClickOutside } from "@mantine/hooks";
+import { createContext, useContext, useState } from "react";
 
 const DataContext = createContext(false);
 
 const Dropdown = (props) => {
 	const [toggle, setToggle] = useState(false);
-	const ref = useRef(null);
+	const ref = useClickOutside(() => setToggle(false));
 	const handlerToggle = () => setToggle(!toggle);
 
 	const {
 		classAdd = ""
 	} = props;
 
-	useEffect(() => {
-		ref['current'].addEventListener('mouseleave', (e) => {
-			setToggle(false);
-		}, false);
-	}, [ref])
+	// useEffect(() => {
+	// 	ref['current'].addEventListener('mouseleave', (e) => {
+	// 		setToggle(false);
+	// 	}, false);
+	// }, [ref])
 
 
 	return (
