@@ -4,7 +4,7 @@
 		"estado": "activo",
 		"tipo": "Parque",
 		"referencia": "Parque la esperanza",
-		"creado": "",
+		"creado": "20221115",
 		"etapa": "Identificación de necesidades",
 		"location": [20.9651717887956, -89.5972159332191]
 	},
@@ -13,7 +13,7 @@
 		"estado": "activo",
 		"tipo": "Predio",
 		"referencia": "Centro historio",
-		"creado": "",
+		"creado": "20221201",
 		"etapa": "Alineación a la normativa",
 		"location": [20.9682606139491, -89.6201223891979]
 	},
@@ -22,7 +22,7 @@
 		"estado": "suspendido",
 		"tipo": "Predio",
 		"referencia": "Nuevo catastro municipal",
-		"creado": "",
+		"creado": "20221208",
 		"etapa": "Desarrollo del proyecto",
 		"location": [20.9572200266366, -89.6172137258179]
 	},
@@ -31,7 +31,7 @@
 		"estado": "activo",
 		"tipo": "Parque",
 		"referencia": "Plaza Grande",
-		"creado": "",
+		"creado": "20221212",
 		"etapa": "Validación del proyecto",
 		"location": [20.9670851362678, -89.6237121835385]
 	},
@@ -40,7 +40,7 @@
 		"estado": "suspendido",
 		"tipo": "Parque",
 		"referencia": "Unidad deportiva Morelos",
-		"creado": "",
+		"creado": "20230101",
 		"etapa": "Desarrollo del proyecto",
 		"location": [20.943381340947, -89.5934973839524]
 	},
@@ -49,7 +49,7 @@
 		"estado": "suspendido",
 		"tipo": "Escuela",
 		"referencia": "Estacion de ferrocarriles",
-		"creado": "",
+		"creado": "20230101",
 		"etapa": "Elaboración del convenio",
 		"location": [20.9769390453522, -89.6131291432272]
 	},
@@ -58,7 +58,7 @@
 		"estado": "activo",
 		"tipo": "Parque",
 		"referencia": "Parque Santiago",
-		"creado": "",
+		"creado": "20230103",
 		"etapa": "Desarrollo del proyecto",
 		"location":[20.9701352210436, -89.6297610888398]
 	},
@@ -67,7 +67,7 @@
 		"estado": "activo",
 		"tipo": "Predio",
 		"referencia": "Centenario",
-		"creado": "",
+		"creado": "20230104",
 		"etapa": "Notificación de resultado",
 		"location":[20.9698302719172, -89.6402212754153]
 	},
@@ -76,7 +76,7 @@
 		"estado": "activo",
 		"tipo": "Escuela",
 		"referencia": "T1",
-		"creado": "",
+		"creado": "20230106",
 		"etapa": "Desarrollo del proyecto",
 		"location":[20.9781003683126, -89.6036844256814]
 	},
@@ -85,7 +85,7 @@
 		"estado": "activo",
 		"tipo": "Predio",
 		"referencia": "Monumento a la bandera",
-		"creado": "",
+		"creado": "20230110",
 		"etapa": "Puesta en marcha",
 		"location":[20.9897051054242, -89.6168584695043]
 	}

@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import data from './assets/data.json';
 
 import Filtros from './components/filtros/filtros';
-import Tabla from './components/tabla/tabla';
+// import Tabla from './components/tabla/tabla';
+import Tabla from './components/tablaNew/tabla';
 import GtMaps from './components/mapa/mapa';
 import Sidebar from './components/Sidebar';
 import TabInfo from './components/tabs';
@@ -89,7 +90,8 @@ function App() {
 							<Filtros/>
 						</div>
 						<div className="col-span-1 xl:col-span-5 2xl:col-span-4 p-3 border-slate-100 dark:border-slate-500 border">
-							<Tabla {...dataTable} />
+							{/* <Tabla {...dataTable} /> */}
+							{results.length > 0 && (<Tabla results={results} />)}
 
 							<div className="grid grid-cols-4 gap-2 pt-5">
 								<div className="col-span-2">

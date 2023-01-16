@@ -10,7 +10,6 @@ const Sidebar = ({toggleTheme}) => {
 	const handlerToggleActive = () => setActive(!active);
 
 	useEffect(() => {
-		console.log(ref['current']);
 		ref['current'].addEventListener('mouseleave', (e) => {
 			setActive(false);
 		}, false);

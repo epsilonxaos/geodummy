@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 const DataContext = createContext(false);
 
@@ -12,11 +11,11 @@ const Dropdown = (props) => {
 		classAdd = ""
 	} = props;
 
-	// useEffect(() => {
-	// 	ref['current'].addEventListener('mouseleave', (e) => {
-	// 		setToggle(false);
-	// 	}, false);
-	// }, [ref])
+	useEffect(() => {
+		ref['current'].addEventListener('mouseleave', (e) => {
+			setToggle(false);
+		}, false);
+	}, [ref])
 
 
 	return (
@@ -45,13 +44,12 @@ const Button = (props) => {
 const Body = (props) =>  {
 	const {toggle} = useContext(DataContext);
 
-	return createPortal(
+	return(
 		<div 
-			className={` ${!toggle && ('hidden')} z-10 bg-white divide-y text-left divide-gray-100 rounded shadow w-40 dark:bg-gray-700 absolute`}
+			className={` ${!toggle && ('hidden')} z-10 bg-white divide-y text-left divide-gray-100 rounded shadow w-40 dark:bg-gray-700 absolute top-full right-0`}
 		>
 			{props.children}
-		</div>,
-		document.body
+		</div>
 	)
 }
 
