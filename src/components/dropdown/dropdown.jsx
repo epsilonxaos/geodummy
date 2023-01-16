@@ -20,7 +20,7 @@ const Dropdown = (props) => {
 
 	return (
 		<DataContext.Provider value={{toggle, handlerToggle}}>
-			<div className={`relative text-right ${classAdd}`} ref={ref}>
+			<div className={`relative text-right ${classAdd} h-[28px]`} ref={ref}>
 				{props.children}
 			</div>
 		</DataContext.Provider>
@@ -34,7 +34,7 @@ const Button = (props) => {
 		<button
 			type="button"
 			onClick={() => handlerToggle()}
-			className="text-gray-900 hover:bg-gray-100 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-white"
+			className="text-gray-900 hover:bg-gray-200 font-medium rounded-sm text-sm h-[28px] w-[32px] text-center inline-flex items-center justify-center dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white"
 		> 
 			{props.children}
 		</button>

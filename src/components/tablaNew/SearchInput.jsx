@@ -1,4 +1,5 @@
 import { useState } from "react";
+import regeneratorRuntime from "regenerator-runtime";
 import { useAsyncDebounce } from "react-table";
 
 const SearchInput = ({globalFilter, setGlobalFilter}) => {

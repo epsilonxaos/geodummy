@@ -71,6 +71,7 @@ function App() {
 	}, [theme]);	
 
 	useEffect(() => {
+		if(!filtros) setResults(data);
 		if(filtros) setFilters(filtros);
 	}, [filtros])
 
@@ -91,7 +92,7 @@ function App() {
 						</div>
 						<div className="col-span-1 xl:col-span-5 2xl:col-span-4 p-3 border-slate-100 dark:border-slate-500 border">
 							{/* <Tabla {...dataTable} /> */}
-							{results.length > 0 && (<Tabla results={results} />)}
+							{results.length > 0 && (<Tabla results={results} mapa={mapa} getIdSelect={getIdSelect} />)}
 
 							<div className="grid grid-cols-4 gap-2 pt-5">
 								<div className="col-span-2">

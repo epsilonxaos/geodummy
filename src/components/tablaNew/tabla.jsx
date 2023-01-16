@@ -1,36 +1,69 @@
-import { useMemo, useState } from "react";
-import regeneratorRuntime from "regenerator-runtime";
-import { useTable, usePagination, useGlobalFilter, useAsyncDebounce } from "react-table";
+import { useEffect, useMemo, useState } from "react";
+import { useTable, usePagination, useGlobalFilter } from "react-table";
 import { getColorBaged } from '../../assets/js/helpers';
-import {MdMoreVert, MdWarning, MdDeleteForever, MdCheckCircle, MdDangerous, MdConstruction, MdNavigateNext, MdNavigateBefore} from 'react-icons/md';
+import {MdMoreVert, MdWarning, MdDeleteForever, MdCheckCircle, MdDangerous, MdConstruction, MdNavigateNext, MdNavigateBefore, MdMyLocation} from 'react-icons/md';
 import moment from "moment/moment";
 import Dropdown from "../dropdown/dropdown";
 import useModal from '../../hooks/useModal';
 import MdEtapa from '../tabla/mdEtapa';
 import SearchInput from "./SearchInput";
+import {Marker, VectorLayer} from 'maptalks';
 
-const Tabla = ({results}) => {
+import markerIcon from '../../assets/icono_info.png';
+
+
+const Tabla = ({results, mapa, getIdSelect}) => {
 	const {isOpen, toggleModal} = useModal();
 	const [optionActive, setOptionActive] = useState();
 	const data = useMemo( () => results );
-	const columns = useMemo(
-		() => [
-			{ Header: '#', accessor: 'id' },
-			{
-				Header: 'Estado',
-				accessor: 'estado',
-				Cell: ({value}) => (value === 'activo') ? <MdCheckCircle color={"#00b341"} size={"20px"} /> : <MdDangerous color={"#fd0061"} size={"20px"}/>
-			},
-			{ Header: 'Tipo', accessor: 'tipo' },
-			{ Header: 'Referencia', accessor: 'referencia', },
-			{ Header: 'Creado', accessor: 'creado', Cell: ({value}) => moment(value).format('DD/MM/YYYY') },
-			{ 
-				Header: 'Etapa', 
-				accessor: 'etapa', 
-				Cell: ({value}) => <span className={`${getColorBaged(value)} text-xs font-medium mr-2 px-2.5 py-0.5 rounded text-gray-800`}> {value} </span>
-			},
-			{ Header: '', id: 'acciones', accessor: (original) => {
-				return(
+	const map = mapa;
+
+	const addMarker = (location, id) => {
+	
+		document.querySelectorAll('.rows-selects').forEach(item => item.classList.remove('bg-gray-100'));
+		document.getElementById("id-row-"+id).classList.add('bg-gray-100');
+		getIdSelect(id);
+		let layer = map.getLayer('vector');
+		if(layer) map.removeLayer(layer);
+
+		var m = new Marker([location[1], location[0]], {
+			'id' : 'marker',
+			'symbol' : {
+				'markerFile'  : markerIcon,
+				'markerWidth' : 32,
+				'markerHeight': 32,
+			}
+		});
+
+		let l = new VectorLayer('vector', m).addTo(map);
+		map.setCenter([location[1], location[0]]);
+	}
+
+	const columnas = [
+		{ Header: '#', accessor: 'id'},
+		{
+			Header: 'Estado',
+			accessor: 'estado',
+			Cell: ({value}) => (value === 'activo') ? <MdCheckCircle color={"#00b341"} size={"20px"} /> : <MdDangerous color={"#fd0061"} size={"20px"}/>
+		},
+		{ Header: 'Tipo', accessor: 'tipo' },
+		{ Header: 'Referencia', accessor: 'referencia', },
+		{ Header: 'Creado', accessor: 'creado', Cell: ({value}) => moment(value).format('DD/MM/YYYY') },
+		{ 
+			Header: 'Etapa', 
+			accessor: 'etapa', 
+			Cell: ({value}) => <span className={`${getColorBaged(value)} text-xs font-medium mr-2 px-2.5 py-0.5 rounded text-gray-800`}> {value} </span>
+		},
+		{ Header: '', id: 'acciones', accessor: (original) => {
+			return(
+				<div className="flex items-center justify-center">
+					<button
+						type="button"
+						onClick={() => addMarker(original.location, original.id)}
+						className="text-gray-900 mr-1 hover:bg-gray-200 rounded-sm font-medium text-sm h-[28px] w-[32px] text-center inline-flex items-center justify-center dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-white"
+					>
+						<MdMyLocation />
+					</button>
 					<Dropdown>
 						<Dropdown.Button>
 							<MdMoreVert size={"20px"} />
@@ -57,11 +90,16 @@ const Tabla = ({results}) => {
 							</ul>
 						</Dropdown.Body>
 					</Dropdown>
-				);
-			}, }
-		], []
+				</ div>
+			);
+			},
+		}
+	];
+
+	const columns = useMemo(
+		() => columnas, []
 	);
-	const tableInstance = useTable({ columns, data, initialState: { pageIndex: 0, pageSize: 5 } }, useGlobalFilter, usePagination);
+	const tableInstance = useTable({ columns, data, initialState: { pageIndex: 0, pageSize: 6 } }, useGlobalFilter, usePagination);
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -88,12 +126,12 @@ const Tabla = ({results}) => {
 	return (
 		// apply the table props
 		<>
-			<div className="min-h-[305px]">
-				<SearchInput 
-					reGlobalFilteredRows={preGlobalFilteredRows}
-					globalFilter={globalFilter}
-					setGlobalFilter={setGlobalFilter}
-				/>
+			<SearchInput 
+				reGlobalFilteredRows={preGlobalFilteredRows}
+				globalFilter={globalFilter}
+				setGlobalFilter={setGlobalFilter}
+			/>
+			<div className="min-h-[310px] shadow-md">
 				<table {...getTableProps()} className="w-full text-sm text-left text-gray-500 dark:text-gray-300">
 					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-400">
 						{// Loop over the header rows
@@ -103,7 +141,7 @@ const Tabla = ({results}) => {
 								{// Loop over the headers in each row
 								headerGroup.headers.map(column => (
 								// Apply the header cell props
-								<th {...column.getHeaderProps()} className="px-6 py-3">
+								<th {...column.getHeaderProps()} className="px-2 py-3 2xl:px-6">
 									{// Render the header
 									column.render('Header')}
 								</th>
@@ -116,15 +154,15 @@ const Tabla = ({results}) => {
 						{// Loop over the table rows
 							page.map((row, i) => {
 							// Prepare the row for display
-							prepareRow(row)
+							prepareRow(row);
 							return (
 								// Apply the row props
-								<tr {...row.getRowProps()} className="border-b bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
+								<tr {...row.getRowProps()} className="border-b bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 rows-selects" id={`id-row-${row.original.id}`}>
 								{// Loop over the rows cells
 								row.cells.map(cell => {
 									// Apply the cell props
 									return (
-									<td {...cell.getCellProps()} className="px-6 py-0.5">
+									<td {...cell.getCellProps()} className="px-2 py-2 2xl:px-6">
 										{// Render the cell contents
 											cell.render("Cell")
 										}
@@ -157,7 +195,7 @@ const Tabla = ({results}) => {
 					</p>
 				</div>
 				<div className="">
-					<p className="mb-0 inline-block text-sm font-medium text-gray-900 dark:text-white">Ir a la página:</p>
+					<p className="mb-0 inline-block text-sm font-medium text-gray-900 dark:text-white pr-1.5">Ir a la página:</p>
 					<input
 						className="bg-white border w-16 border-gray-300 text-gray-900 text-sm py-1 px-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
 						type="number"
@@ -174,7 +212,7 @@ const Tabla = ({results}) => {
 						setPageSize(Number(e.target.value))
 						}}
 					>
-						{[5, 10, 20, 30, 40, 50].map(pageSize => (
+						{[6, 10, 20, 30, 40, 50].map(pageSize => (
 							<option key={pageSize} value={pageSize}>
 								Mostrar {pageSize}
 							</option>
