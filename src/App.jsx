@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 
 import data from './assets/data.json';
 
@@ -16,32 +16,32 @@ import {WMSTileLayer} from 'maptalks';
 
 
 function App() {
-	const [results, setResults] = useState([]);
-	const [datasource, setDataSource] = useState(null);
-	const [filtros, setFiltros] = useState(null);
-	const [mapa, setMapa] = useState(false);
-	const [tabs, setTabs] = useState(null);
-	const [theme, setTheme] = useState(false);
+	const [event, updateEvent] = useReducer(
+		(prev, next) => {
+			return {...prev, ...next};
+		},
+		{results: [], datasource: null, filtros: null, mapa: false, tabs: null, theme: false}
+	);
 
 	const handlerSetMapa = (mapaInit) => {
-		setMapa(mapaInit);
+		updateEvent({mapa: mapaInit});
 	};
 
 	const setFilters = (query) => {
-		let filter = Query(datasource)
+		let filter = Query(event.datasource)
 			.filter(query)
 			.sortBy('id')
 			.toArray();
 
-		setResults(filter);
+		updateEvent({results: filter});
 	}
 
 	const updateBaseLayer = () => {
-		let layer = mapa.getBaseLayer();
-		mapa.removeBaseLayer(layer);
+		let layer = event.mapa.getBaseLayer();
+		event.mapa.removeBaseLayer(layer);
 
-		var Baselayer = (!theme) ? "merida_base_obscuro" : "merida_base";
-		mapa.setBaseLayer(new WMSTileLayer('wms', {
+		var Baselayer = (!event.theme) ? "merida_base_obscuro" : "merida_base";
+		event.mapa.setBaseLayer(new WMSTileLayer('wms', {
 			'spatialReference': {
 				projection: 'EPSG:3857'
 			},
@@ -55,30 +55,28 @@ function App() {
 		}));
 	}
 
-	const updateFiltros = (filters) => setFiltros(filters);
+	const updateFiltros = (filters) => updateEvent({filtros: filters});
 
-	const toggleTheme = () => {setTheme(!theme); updateBaseLayer();};
+	const toggleTheme = () => {updateEvent({theme: !event.theme}); updateBaseLayer();};
 
 	const getIdSelect = (idx) => {
-		let f = results.filter(({id}) => id == idx)[0];
-		setTabs(f)
+		let f = event.results.filter(({id}) => id == idx)[0];
+		updateEvent({tabs: f});
 	}
 
-	useEffect(() => setDataSource(data), [])
+	useEffect(() => updateEvent({datasource: data}), [])
 
 	useEffect(() => {
-		theme ? document.querySelector("html").classList.add('dark') : document.querySelector("html").classList.remove('dark')
-	}, [theme]);	
+		event.theme ? document.querySelector("html").classList.add('dark') : document.querySelector("html").classList.remove('dark')
+	}, [event.theme]);	
 
 	useEffect(() => {
-		if(!filtros) setResults(data);
-		if(filtros) setFilters(filtros);
-	}, [filtros])
-
-	const dataTable = {titles: ['#', 'Estado', 'Tipo', 'Referencia', 'Creado', 'Etapa', ''],  data: results, mapa: mapa, getIdSelect: getIdSelect}
+		if(!event.filtros) updateEvent({results: data});
+		if(event.filtros) updateEvent({filtros: event.filtros});
+	}, [event.filtros]);
 
 	return (
-		<DataContext.Provider value={{datasource, updateFiltros, setFilters}}>
+		<DataContext.Provider value={{event, updateFiltros, setFilters}}>
 			<div className={`bg-white dark:bg-gray-700 min-h-screen w-full font-barlow pl-[55px]`}>
 				<Sidebar toggleTheme={toggleTheme} />
 
@@ -92,14 +90,14 @@ function App() {
 						</div>
 						<div className="col-span-1 xl:col-span-5 2xl:col-span-4 p-3 border-slate-100 dark:border-slate-500 border">
 							{/* <Tabla {...dataTable} /> */}
-							{results.length > 0 && (<Tabla results={results} mapa={mapa} getIdSelect={getIdSelect} />)}
+							{event.results.length > 0 && (<Tabla results={event.results} mapa={event.mapa} getIdSelect={getIdSelect} />)}
 
 							<div className="grid grid-cols-4 gap-2 pt-5">
 								<div className="col-span-2">
-									<GtMaps mapa={mapa} handlerSetMapa={handlerSetMapa} />
+									<GtMaps mapa={event.mapa} handlerSetMapa={handlerSetMapa} />
 								</div>
 								<div className="bg-gray-50 dark:bg-gray-800 col-span-2">
-									<TabInfo tabs={tabs} />
+									<TabInfo tabs={event.tabs} />
 								</div>
 							</div>
 

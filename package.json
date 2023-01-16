@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.10.0",
+    "@mantine/hooks": "^5.10.0",
     "devextreme": "^22.2.3",
     "flowbite": "^1.6.0",
     "flowbite-react": "^0.3.7",

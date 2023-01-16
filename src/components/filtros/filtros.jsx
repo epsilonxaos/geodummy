@@ -6,7 +6,7 @@ import { DataContext } from '../../context/Context';
 const Filtros = () => {
 	const [filtro, setFiltros] = useState([]);
 	const [filterBuild, setFilterBuild] = useState(null);
-	const {datasource, updateFiltros} = useContext(DataContext);
+	const {event, updateFiltros} = useContext(DataContext);
 
 	useEffect(() => {
 		setFiltros(data);
@@ -40,7 +40,7 @@ const Filtros = () => {
 
 	// Construir query con las listas
 	const queryBuild = () => {
-		let dataSc = datasource;
+		let dataSc = event.datasource;
 		if(filterBuild) {
 			let temp = [];
 			filterBuild.forEach((f, idx) => {
